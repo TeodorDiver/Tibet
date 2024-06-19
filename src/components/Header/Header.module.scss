@@ -7,6 +7,25 @@ header {
         font-size: 26px;
     }
 
+    .nav{
+        float: right;
+        list-style: none;
+
+
+        li{
+            display: inline;
+            margin-left: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            transition: opacity 500ms ease;
+
+            &:hover{
+                opacity: 0.5;
+            }
+        }
+    }
+
     .presentation {
         margin: 50px 0;
         background: url('../../assets/banner.jpg');
@@ -17,6 +36,24 @@ header {
         position: relative;
         border-radius: 15px;
         background-repeat: no-repeat;
+
+        &::after{
+            content: 'Открой свой Тибет из любой точки мира';
+            color: #fff;
+            position: absolute;
+            top: 150px;
+            left: 320px;
+            font-size: 33px;
+        }
+
+        &::before{
+            content: 'Вам понравится';
+            color: #fff;
+            position: absolute;
+            top: 305px;
+            left: 480px;
+            font-size: 33px;
+        }
     }
 
     

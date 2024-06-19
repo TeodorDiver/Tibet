@@ -5,7 +5,12 @@ export default function Header() {
     return (
         <header>
             <div>
-                <span className={styles.logo}>Coffe Shop</span>
+                <span className={styles.logo}>Тибет</span>
+                <ul className={styles.nav}>
+                    <li>О нас</li>
+                    <li>Контакты</li>
+                    <li>Личный кабинет</li>
+                </ul>
             </div>
             <div className={styles.presentation}></div>
         </header>
