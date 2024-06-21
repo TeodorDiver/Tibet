@@ -4,4 +4,23 @@ main{
     flex-wrap: wrap;
     justify-content: space-between;
     
+
+
+    h2,p,b{
+        margin: 10px 20px;
+        color: #fff;
+    }
+
+    p{
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+
+    b{
+        color: rgba(225, 36, 36, 0.856);
+        font-size: 20px;
+        position: absolute;
+        bottom: 20px;
+    }
 }

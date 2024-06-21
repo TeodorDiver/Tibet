@@ -1,18 +1,48 @@
 header {
 
+    .icon {
+        font-size: 20px;
+        margin-right: 10px;
 
+    }
 
     .logo {
         font-weight: 600;
         font-size: 26px;
     }
 
-    .nav{
+    .shopCartButton {
+        font-size: 22px;
+        float: right;
+        cursor: pointer;
+        transition: color 500ms ease;
+
+        &:hover,
+        &:active {
+            color: #f20202;
+
+        }
+    }
+
+    .shopCart {
+        position: absolute;
+        background: #ff0101;
+        top: 30px;
+        right: 0;
+        width: 450px;
+        min-height: 100px;
+        z-index: 1000;
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .nav {
         float: right;
         list-style: none;
 
 
-        li{
+        li {
             display: inline;
             margin-left: 25px;
             cursor: pointer;
@@ -20,7 +50,7 @@ header {
             font-weight: 500;
             transition: opacity 500ms ease;
 
-            &:hover{
+            &:hover {
                 opacity: 0.5;
             }
         }
@@ -37,7 +67,7 @@ header {
         border-radius: 15px;
         background-repeat: no-repeat;
 
-        &::after{
+        &::after {
             content: 'Открой свой Тибет из любой точки мира';
             color: #fff;
             position: absolute;
@@ -46,7 +76,7 @@ header {
             font-size: 33px;
         }
 
-        &::before{
+        &::before {
             content: 'Вам понравится';
             color: #fff;
             position: absolute;
@@ -56,7 +86,7 @@ header {
         }
     }
 
-    
+
 
 
 }

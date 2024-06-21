@@ -103,11 +103,16 @@ function App() {
       price:'10$'
     }
   ]);
+  const [orders, setOrders]=useState([]);
+
+  const addToOrder=(item)=>{
+    setOrders([...orders,item]);
+  }
 
   return (
     <div className="wrapper">
-      <Header />
-      <Items allItems={items}/>
+      <Header orders={orders}/>
+      <Items allItems={items} onAdd={addToOrder}/>
       <Footer />
     </div>
   );
