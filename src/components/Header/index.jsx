@@ -3,9 +3,18 @@ import styles from './Header.module.scss';
 import { PiMountainsBold } from "react-icons/pi";
 import { CiShoppingBasket } from "react-icons/ci";
 import Orders from "../Orders";
+import PriceListPDF from "../PriceListPDF";
+import {saveAs} from 'file-saver';
+import {pdf} from '@react-pdf/renderer';
+
 
 export default function Header(props) {
     let [cartOpen, setCartOpen] = useState(false);
+
+const handleDownLoadPDF=async()=>{
+    const pdfBlob = await pdf(<PriceListPDF items={props.items}/>).toBlob();
+    saveAs(pdfBlob, 'PriceList.pdf');
+}
 
     const showOrders = (props) => {
         let summa=0;
@@ -38,7 +47,7 @@ export default function Header(props) {
                 <ul className={styles.nav}>
                     <li>О нас</li>
                     <li>Контакты</li>
-                    <li>Личный кабинет</li>
+                    <li onClick={handleDownLoadPDF}>Скачать прайс-лист</li>
                 </ul>
                 <CiShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
                 {cartOpen && (
