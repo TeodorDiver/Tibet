@@ -38,3 +38,53 @@
         }
     }
 }   
+
+@media only screen and (max-width: 480px) {
+    .item{
+        width: 100%;
+        float: left;
+        margin-bottom: 20px;
+    
+        img{
+            width: 51px;
+            height: 50px;
+            float: left;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+    
+        h2{
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 100;
+        }
+    
+        b{
+            color: aqua;
+            position: relative;
+            right: -5px;
+            display: inline;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+        }
+    
+        .deleteIcon{
+            color:aqua;
+            float: right;
+            position: relative;
+            top: -40px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color,transform 1000ms ease;
+    
+            &:hover{
+                color:chocolate;
+                transform: scale(1.5);
+    
+            }
+        }
+    }   
+    
+}

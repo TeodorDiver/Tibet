@@ -24,3 +24,32 @@ main{
         bottom: 20px;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    main{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+       
+        h2,p,b{
+            margin: 10px 20px;
+            color: #fff;
+        }
+    
+        p{
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+    
+        b{
+            color: rgba(225, 36, 36, 0.856);
+            font-size: 40px;
+            position: absolute;
+            bottom: 0px;
+        }
+    }
+    
+}
