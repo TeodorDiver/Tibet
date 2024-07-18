@@ -7,6 +7,7 @@ import Categories from './components/Categories';
 import ShowFullItem from './components/ShowFullItem'; 
 import axios from 'axios';
 
+
 function App() {
   const [items, setItems] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -49,12 +50,15 @@ function App() {
     setFullItem(item);
     setShowFullItem(!showFullItem);
   }
+
+
   return (
     <div className="wrapper">
       <Header orders={orders} onDelete={deleteOrder} items={items}/>
       <Categories chooseCategory={chooseCategory} />
       <Items allItems={currentItems} onShowItem={onShowItem} onAdd={addToOrder} />
       {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
+      
       <Footer />
     </div>
   );

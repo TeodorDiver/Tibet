@@ -4,27 +4,30 @@ import { PiMountainsBold } from "react-icons/pi";
 import { CiShoppingBasket } from "react-icons/ci";
 import Orders from "../Orders";
 import PriceListPDF from "../PriceListPDF";
-import {saveAs} from 'file-saver';
-import {pdf} from '@react-pdf/renderer';
+import { saveAs } from 'file-saver';
+import { pdf } from '@react-pdf/renderer';
+import Modal from "../Modal"
+
+
 
 
 export default function Header(props) {
     let [cartOpen, setCartOpen] = useState(false);
 
-const handleDownLoadPDF=async()=>{
-    const pdfBlob = await pdf(<PriceListPDF items={props.items}/>).toBlob();
-    saveAs(pdfBlob, 'PriceList.pdf');
-}
+    const handleDownLoadPDF = async () => {
+        const pdfBlob = await pdf(<PriceListPDF items={props.items} />).toBlob();
+        saveAs(pdfBlob, 'PriceList.pdf');
+    }
 
     const showOrders = (props) => {
-        let summa=0;
+        let summa = 0;
 
-        props.orders.forEach(el =>summa+=Number.parseFloat(el.price));
+        props.orders.forEach(el => summa += Number.parseFloat(el.price));
         return (
             <>
                 {props.orders.map(el => (
-                    <Orders key={el.id} item={el} 
-                        onDelete={props.onDelete}/>
+                    <Orders key={el.id} item={el}
+                        onDelete={props.onDelete} />
                 ))}
                 <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)} $</p>
             </>
@@ -38,15 +41,15 @@ const handleDownLoadPDF=async()=>{
             </div>
         );
     }
-
+const [modalActive, setModalActive] = useState(false);
     return (
+        
         <header>
             <div>
                 <PiMountainsBold className={styles.icon} />
                 <span className={styles.logo}>Тибет</span>
                 <ul className={styles.nav}>
-                    <li>О нас</li>
-                    <li>Контакты</li>
+                    <li onClick={()=>setModalActive(true)}>О нас</li>
                     <li onClick={handleDownLoadPDF}>Скачать прайс-лист</li>
                 </ul>
                 <CiShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
@@ -57,8 +60,9 @@ const handleDownLoadPDF=async()=>{
                 )}
             </div>
 
-
             <div className={styles.presentation}></div>
+            
+            <Modal active={modalActive} setActive={setModalActive}><p>Lorem</p></Modal> 
         </header>
     );
 }
