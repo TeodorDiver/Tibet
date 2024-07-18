@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from './Header.module.scss';
 import { PiMountainsBold } from "react-icons/pi";
 import { CiShoppingBasket } from "react-icons/ci";
@@ -41,15 +41,35 @@ export default function Header(props) {
             </div>
         );
     }
-const [modalActive, setModalActive] = useState(false);
+
+    const [modalActive, setModalActive] = useState(false);
+    const modalRef = useRef()
+    useEffect(() => {
+        if (modalActive) {
+        document.addEventListener('mousedown', handleClickOutside);
+        } else {
+        document.removeEventListener('mousedown', handleClickOutside);
+        }
+       
+        return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        };
+        }, [modalActive]);
+       
+        const handleClickOutside = (event) => {
+        if (!modalRef.current || !modalRef.current.contains(event.target)) {
+        setModalActive(false);
+        }
+        };
+
     return (
-        
+
         <header>
             <div>
                 <PiMountainsBold className={styles.icon} />
                 <span className={styles.logo}>Тибет</span>
                 <ul className={styles.nav}>
-                    <li onClick={()=>setModalActive(true)}>О нас</li>
+                    <li onClick={() => setModalActive(true)}>О нас</li>
                     <li onClick={handleDownLoadPDF}>Скачать прайс-лист</li>
                 </ul>
                 <CiShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
@@ -61,8 +81,8 @@ const [modalActive, setModalActive] = useState(false);
             </div>
 
             <div className={styles.presentation}></div>
-            
-            <Modal active={modalActive} setActive={setModalActive}><p>Lorem</p></Modal> 
+
+            <Modal active={modalActive} setActive={setModalActive}><p>Lorem</p></Modal>
         </header>
     );
 }
